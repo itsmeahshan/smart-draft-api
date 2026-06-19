@@ -49,7 +49,13 @@ ${text}
 
     const data = await response.json()
 
-    res.status(200).json(data)
+    const invoice = await response.json()
+
+    setClient(invoice.clientName)
+    
+    setCurrency(invoice.currency)
+    
+    setLineItems(invoice.lineItems)
   } catch (error) {
     res.status(500).json({
       error: error.message,
